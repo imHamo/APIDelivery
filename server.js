@@ -7,6 +7,13 @@ app.use(express.json());
 
 const API_KEY = '0b688e0bd491bd0c5193f1f9dabc482c35c396a1'; // Your Delhivery API Key
 
+// Set headers to allow fetching data from your Express.js server
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 app.get('/api/proxy', async (req, res) => {
   const { waybill } = req.query;
 
